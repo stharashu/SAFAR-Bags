@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+   body {
+      font-family: 'Playfair Display', serif;
+      background-color: #f4f4f4;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: orangered;
+    }
+    .login-container {
+      background-color: rgb(234, 234, 110);
+      padding: 40px;
+      border-radius: 10px; 
+      box-shadow: 0 2px 5px darkgreen; 
+      max-width: 800px; 
+      text-align: left; 
+      margin: 0 auto; 
+    }
+    .login-container label, .login-container input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .login-container input[type="text"], .login-container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px; 
+    }
+    .login-container input[type="submit"] {
+      background-color: darkolivegreen;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px; 
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    SAFAR
+  </div>
+  <div class="login-container">
+    <h2>Register</h2>
+    <form id="registration-form">
+      <label for="register-email">Email:</label>
+      <input type="text" id="register-email" name="register-email" required>
+      <label for="register-password">Password:</label>
+      <input type="password" id="register-password" name="register-password" required>
+      <input type="submit" value="Register">
+      <a href=logintryy.html>LogIn</a>
+    </form>
+  </div>
+
+  <script>
+    const registrationForm = document.getElementById("registration-form");
+
+    registrationForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const registerEmailInput = document.getElementById("register-email");
+      const registerPasswordInput = document.getElementById("register-password");
+      const registerEmail = registerEmailInput.value;
+      const registerPassword = registerPasswordInput.value;
+
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!registerEmail.match(emailRegex)) {
+        alert("Invalid email format. Please enter a valid email address.");
+        registerEmailInput.focus();
+        return;
+      }
+
+      if (registerPassword.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        registerPasswordInput.focus();
+        return;
+      }
+
+      // Retrieve the registered users from local storage or initialize an empty array
+      const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+      // Check if the user is already registered
+      if (registeredUsers.some(u => u.email === registerEmail)) {
+        alert("User with this email already exists. Please use a different email.");
+        return;
+      }
+
+      // Store the registered user in the array
+      registeredUsers.push({
+        email: registerEmail,
+        password: registerPassword,
+      });
+
+      // Save the updated array back to local storage
+      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+      // Clear the registration form
+      registerEmailInput.value = "";
+      registerPasswordInput.value = "";
+
+      alert("Registration successful. You can now log in.");
+    });
+  </script>
+</body>
+</html>

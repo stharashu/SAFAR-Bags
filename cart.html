@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .cart-container {
+            background-color:lightblue;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .cart-container h3 {
+            margin-bottom: 10px;
+        }
+
+        .cart-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-container li {
+            margin-bottom: 10px;
+        }
+
+        .cart-container button {
+            background-color: lightblue;   
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-container p {
+            margin-top: 10px;
+            font-weight: bold;
+        }   
+
+        #checkoutbut {
+           background-color: orangered;
+    color: white;
+    margin: auto;
+    border-radius: 25px !important;
+    display: block;
+    width: 160px; 
+    height: 32px; 
+    font-weight: bold;
+    }
+
+    body{
+        text-align: center;
+    }
+ 
+    </style>
+
+</head>
+<body>
+    <div class="cart-container">
+        <h3>Your Cart</h3>
+        <ul class="item-list"></ul>
+        <p class="total" id="cartTotal">Total: $0.00</p>
+        <button id="checkoutbut">Checkout</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const itemList = document.querySelector('.item-list');
+        const totalElement = document.getElementById('cartTotal');
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        updateCartUI();
+
+        function updateCartUI() {
+            itemList.innerHTML = '';
+            cartItems.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => removeFromCart(index));
+                listItem.appendChild(removeButton);
+                itemList.appendChild(listItem);
+            });
+
+            const total = cartItems.reduce((total, item) => total + item.price, 0);
+            totalElement.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCartUI();
+            saveCartItems();
+        }
+
+        function saveCartItems() {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        const checkoutButton = document.getElementById('checkoutbut');
+
+checkoutButton.addEventListener('click', () => {
+    const total = cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+    const message = `Your order of total price $${total} has been placed. Please check your email for additional details.`;
+    displayMessage(message);
+    clearCart();
+});
+
+function displayMessage(message) {
+    alert(message);
+}
+
+function clearCart() {
+    cartItems = [];
+    updateCartUI();
+    saveCartItems();
+}
+
+    </script>
+</body>
+</html>

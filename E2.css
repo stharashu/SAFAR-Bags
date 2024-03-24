@@ -1,0 +1,141 @@
+.container4 {
+    background-color: whitesmoke !important;
+    text-align: center;
+    padding: 5px;
+    border: 5px;
+    margin: none;
+    display: grid;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container4 button {
+    border-radius: 5px;
+    border: none !important;
+    font-size: 14px;
+    padding: 6px 12px; 
+}
+
+.container4but8 {
+    background-color: orangered;
+    color: white;
+    margin: auto;
+    border-radius: 25px !important;
+    display: block;
+    width: 160px; 
+    height: 32px; 
+    font-weight: bold;
+}
+
+
+.container4but1 {
+    background-color: orangered;
+    color: white;
+    margin: auto;
+    border-radius: 25px !important;
+    display: block;
+    width: 160px; 
+    height: 32px; 
+    font-weight: bold;
+}
+
+.container4but8:hover {
+    background-color: rgb(0, 255, 98);
+}
+
+.container4but1:hover {
+    background-color:  rgb(0, 255, 98);
+}
+
+
+.container4card1,
+.container4card2,
+.container4card3,
+.container4card4 {
+    color: black;
+    background-color: lightblue;
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 600px;
+    height: 280px; 
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container4card2,
+.container4card4 {
+    margin-left: 20px; 
+}
+
+.container4box1,
+.container4box2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 25px;
+}
+
+.container4card1 img,
+.container4card2 img,
+.container4card3 img,
+.container4card4 img {
+    width: 200px; 
+    height: auto;
+    margin-bottom: 10px; 
+}
+
+.container4card1 .price,
+.container4card2 .price,
+.container4card3 .price,
+.container4card4 .price {
+    font-size: 16px; 
+    margin-top: 10px; 
+}
+
+
+.cart-container {
+    display: none;
+}
+
+.cart-container.show {
+    display: block;
+}
+
+
+.cart-container {
+    display: none;
+}
+
+.cart-container.show {
+    display: block;
+}
+
+.container4card1 img,
+.container4card2 img,
+.container4card3 img,
+.container4card4 img {
+    max-width: 30%;
+    height: 50%;
+}
+
+.containerdown {
+    background-color:lightblue;
+    text-align: center;
+    padding: 5px;
+    border: 5px;
+    margin: none;
+    display: grid;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.tooltiptext{
+    color:orangered;
+}
+
+

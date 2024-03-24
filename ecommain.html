@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script src="https://kit.fontawesome.com/cb099a6009.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="E1.css">
+    <link rel="stylesheet" href="E2.css">
+
+</head>
+<body>
+    <nav class="topnav">
+        <ul class="topnavlist1">
+
+            <img class="logo"
+                    src="logo1.jpg"
+                    alt="logo" width="50px" height="60px">
+
+            <li class="dropdown">
+                <a class="dropbtn">Men</a>
+                <div class="dropdown-content">
+                    <a href="#">Top Wear</a>
+                    <a href="#">Bottom Wear</a>
+                    <a href="#">Shoes</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Women</a>
+                <div class="dropdown-content">
+                    <a href="#">Western Wear</a>
+                    <a href="#">Traditional Wear</a>
+                    <a href="#">Shoes</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropbtn">Electronics</a>
+                <div class="dropdown-content">
+                    <a href="#a">Mobiles</a>
+                    <a href="#">Laptops</a>
+                    <a href="#">Tablets</a>
+                    <a href="#">Washing Machine</a> 
+                </div>
+            </li>
+        </ul>
+        
+        <form>
+            <input type="text" placeholder="Search Products">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    
+        <ul class="topnavlist2">
+            
+            <li>
+                <a href="cart.html" id="cartToggle">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+
+            
+            <li>
+                <a href="logintryy.html" id="loginButton">
+                    <button id="but1">Login</button>
+                </a>
+            </li>
+        </ul>
+    </nav> 
+
+    <div class="container1">
+        <div class="slideshow">
+           <img src="download.jpeg" alt="Photo 1">
+           <img src="downloadd.jpg" alt="Photo 2">
+           
+        </div>
+        <div class="navigation">
+           <button class="prev-btn">&lt;</button>
+           <button class="next-btn">&gt;</button>
+        </div>
+    </div>
+
+    <div class="container4">
+        <h1 class="heading">Featured Products</h1>
+        <div class="container4box1">
+            <div class="container4card1">
+                <h2>Gucci Bag</h2>
+                <img id="a" src="Gucci.jpg" alt="Realme C55">
+                <span class="price">$199</span>
+                <button class="container4but8">Add to Cart</button>
+            </div>
+
+            <div class="container4card2">
+                <h2>Saint Laurent Bag</h2>
+                <img src="SL.jpg" alt="Mac Book">
+                <span class="price">$1499</span>
+                <button class="container4but1">Add to Cart</button>
+            </div>
+
+            <div class="container4card3">
+                <h2>Christian Dior Bag</h2>
+                <img src="CD.jpeg" alt="Redmi 12">   
+                <span class="price">$299</span>
+                <button class="container4but8">Add to Cart</button>
+            </div>
+
+            <div class="container4card4">
+                <h2>Chanel Bag</h2>
+                <img src="Chanel.jpg" alt="Samsung Washing Machine">
+                <span class="price">$999</span>
+                <button class="container4but1">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container5">
+
+        <div class="containerdown">
+            <div class="container5about">
+                <h3 style="color:orangered; text-align:center;"> About </h3>
+                <p>Welcome to Safar, your go-to e-commerce site for convenient and secure online shopping. Discover a wide range of products, enjoy exceptional service, and shop with confidence. Safar is here to bring your shopping desires to life.
+                    Get ready to explore, discover, and shop with confidence,all from the comfort of your own home. Safar is here to make your shopping dreams a reality. Let's get shopping!!!
+                </p>
+            </div>
+            
+            <div class="container5bottom">
+                <a  href="#"></a><i class="fa-brands fa-instagram" ></i></a>
+                <span class="tooltiptext">Follow us on Instagram </span>
+            </div>
+            
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        const slideshow = document.querySelector('.slideshow');
+        const prevButton = document.querySelector('.prev-btn');
+        const nextButton = document.querySelector('.next-btn');
+        
+        let currentIndex = 0;
+        
+        nextButton.addEventListener('click', () => {
+          currentIndex++;
+          if (currentIndex >= slideshow.children.length) {
+            currentIndex = 0;
+          }
+          updateSlide();
+        });
+        
+        prevButton.addEventListener('click', () => {
+          currentIndex--;
+          if (currentIndex < 0) {
+            currentIndex = slideshow.children.length - 1;
+          }
+          updateSlide();
+        });
+        
+        function updateSlide() {
+          const slideWidth = slideshow.children[0].clientWidth;
+          slideshow.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+    </script>
+
+    <script>
+    
+        const addToCartButtons = document.querySelectorAll('.container4but8, .container4but1');
+        const cartToggle = document.getElementById('cartToggle');
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+
+        function addToCart(event) {
+            const card = event.target.closest('.container4card1, .container4card2, .container4card3, .container4card4');
+            const itemName = card.querySelector('h2').textContent;
+            const itemPrice = parseFloat(card.querySelector('.price').textContent.replace('$', ''));
+            const item = {
+                name: itemName,
+                price: itemPrice
+            };
+            cartItems.push(item);
+            saveCartItems();
+        }
+
+        function saveCartItems() {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        cartToggle.addEventListener('click', () => {
+            window.location.href = 'cart.html';
+        });
+    </script>
+    
+</body>
+</html>

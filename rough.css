@@ -1,0 +1,136 @@
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+.topnav {
+    display: flex !important;
+    justify-content: space-between;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    height: 80px;
+}
+
+.topnavlist1 {
+    display: flex !important;
+    justify-content: space-between;
+    list-style-type: none;
+    text-decoration: none;
+    align-items: center !important;
+}
+
+.topnavlist2 {
+    display: flex !important;
+    justify-content: space-between;
+    list-style-type: none;
+    text-decoration: none;
+    align-items: center !important;
+}
+
+.topnavlist1 li {
+    display: inline-block;
+    padding: 2px 15px;
+    margin-left: 0%;
+}
+
+.topnavlist2 li {
+    display: inline-block;
+    padding: 2px 15px;
+    margin-right: 0%;
+}
+
+.topnav button {
+    float: left;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    padding: 10px 25px !important;
+    font-size: 15px !important;
+    border: none;
+    border-radius: 25px;
+    line-height: 1.5;
+    margin: none !important;
+}
+
+.logo {
+    border: none;
+    outline: 0;
+    float: left !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding-left: 0%;
+}
+
+#but1 {
+    background-color: #282A35;
+    color: #fff;
+    width: 57.583 !important;
+    height:22.5 !important;
+}
+
+#but2 {
+    background-color: #FFC0C7 !important;
+    color: black !important;
+    width: 57.583 !important;
+    height:22.5 !important;
+}
+
+#but3 {
+    background-color: #FFF4A3 !important;
+    color: black !important;
+    width: 57.583 !important;
+    height:22.5 !important;
+}
+
+#but4 {
+    background-color: #04AA6D;
+    color: white;
+    line-height: 1.5;
+    width: 57.583 !important;
+    height:22.5 !important;
+}
+
+#but1:hover {
+    opacity: 0.8;
+}
+
+#but2:hover { 
+    background-color: #e87d8a !important;
+}
+
+#but3:hover {
+    background-color: #ecdb5b !important;
+}
+
+#but4:hover {
+    background-color: #0e9261;
+}
+
+.topnavlist1 li:hover {
+    background-color: initial;
+}
+
+.message {
+    color: red;
+}
